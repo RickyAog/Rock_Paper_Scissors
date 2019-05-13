@@ -6,16 +6,16 @@ public class Rock_Paper_Scissors {
         System.out.println("|Welcome Roshambo                      |");
         System.out.println("|Ro is Rock Sham is paper Bo is scissor|");
         System.out.println("________________________________________");
-
         System.out.println("Type what you would like to play");
-       for(int rsbPlayer=0; rsbPlayer<7; rsbPlayer++){
-           rsbPlayer();
-           rsbCPU();
-           rsbPlayerWinner();
-       }
-
+        for (int rsbPlayer = 0; rsbPlayer < 7; rsbPlayer++) {
+            rsbPlayer();
+            rsbCPU();
+            rsbPlayerWinner();
+            rsbCPUWinner();
+        }
     }
-    public static String rsbPlayer(){
+
+    public static String rsbPlayer() {
         Scanner keyboard = new Scanner(System.in);
         String rsbPlayer;
         rsbPlayer = keyboard.nextLine().toUpperCase();
@@ -28,43 +28,57 @@ public class Rock_Paper_Scissors {
         if (rsbPlayer == "BO") {
             System.out.println("You pick BO");
         }
-    return "You picked " + rsbPlayer;
+        return "You picked " + rsbPlayer;
     }
-    public static String rsbCPU(){
 
-
-
-
-        return"Who is gonna win";
+    public static int rsbCPU() {
+        int rsbCPU = (int) (Math.random() * 100 / 50);
+        if (rsbCPU == 0) {
+            System.out.println("The CPU picked RO");
+        }
+        if (rsbCPU == 1) {
+            System.out.println("The CPU picked SHAM");
+        }
+        if (rsbCPU == 2) {
+            System.out.println("The CPu picked SHAM");
+        }
+        return 2;
     }
-public static String rsbPlayerWinner(){
-        if(rsbPlayer() == rsbCPU() ){
+
+    public static String rsbPlayerWinner() {
+        //TIED
+        if (rsbPlayer() == "RO") while (rsbCPU() == 0) {
             System.out.println("You tied");
         }
-        if (rsbPlayer()=="RO") (rsbCPU()== "BO") {
+        if (rsbPlayer() == "SHAM") while (rsbCPU() == 1) {
+            System.out.println("You tied");
+        }
+        if (rsbPlayer() == "BO") while (rsbCPU() == 2) {
+            System.out.println("You tied");
+        }
+        //RSBPLAYER WINS
+        if (rsbPlayer() == "RO") while (rsbCPU() == 2) {
             System.out.println("YOU WIN");
-    }
-    if(rsbPlayer()=="SHAM")(rsbCPU()== "RO"){
+        }
+        if (rsbPlayer() == "SHAM") while (rsbCPU() == 0) {
             System.out.println("YOU WIN");
-    }
-    if(rsbPlayer()=="BO")(rsbCPU()=="SHAM"){
+        }
+        if (rsbPlayer() == "BO") while (rsbCPU() == 1) {
             System.out.println("YOU WIN");
+        }
+        return "Pick another ro,sham or bo";
     }
 
-
-        return"Pick another ro,sham or bo";
-    }
-    public static String rsbCPUWinner(){
-        if(rsbCPU()=="RO")(rsbPlayer()=="BO"){
+    public static String rsbCPUWinner() {
+        if (rsbCPU() == 0) while (rsbPlayer() == "BO") {
             System.out.println("You lose");
         }
-        if(rsbCPU()=="SHAM")(rsbPlayer()== "RO"){
+        if (rsbCPU() == 1) while (rsbPlayer() == "RO") {
             System.out.println("You lose");
         }
-
+        if (rsbCPU() == 2) while (rsbPlayer() == "SHAM") {
+            System.out.println("You lose");
+        }
         return "pick another Ro,Sham,Bo";
     }
 }
-
-
-
